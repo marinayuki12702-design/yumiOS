@@ -7,7 +7,7 @@
 #  Identidad propia:
 #    - Barra superior fina (menú a la izquierda, reloj centrado, bandeja a la derecha)
 #    - Dock inferior que se oculta solo (Plank)
-#    - Tema oscuro Materia con acento violeta, iconos Papirus, fondo propio
+#    - Tema oscuro Orchis con acento violeta, iconos Papirus, fondo propio
 #    - zram + earlyoom para ir fluido con poca RAM
 #    - Asistente de bienvenida "yumi-welcome"
 #
@@ -100,7 +100,7 @@ blueman
 pipewire-audio
 pavucontrol
 # --- Aspecto ---
-materia-gtk-theme
+orchis-gtk-theme
 papirus-icon-theme
 fonts-noto-core
 fonts-noto-color-emoji
@@ -187,7 +187,7 @@ cat > "$SKEL/xfce4/xfconf/xfce-perchannel-xml/xsettings.xml" <<'EOF'
 <?xml version="1.0" encoding="UTF-8"?>
 <channel name="xsettings" version="1.0">
   <property name="Net" type="empty">
-    <property name="ThemeName" type="string" value="Materia-dark-compact"/>
+    <property name="ThemeName" type="string" value="Orchis-Dark-Compact"/>
     <property name="IconThemeName" type="string" value="Papirus-Dark"/>
   </property>
   <property name="Gtk" type="empty">
@@ -206,7 +206,7 @@ cat > "$SKEL/xfce4/xfconf/xfce-perchannel-xml/xfwm4.xml" <<'EOF'
 <?xml version="1.0" encoding="UTF-8"?>
 <channel name="xfwm4" version="1.0">
   <property name="general" type="empty">
-    <property name="theme" type="string" value="Materia-dark-compact"/>
+    <property name="theme" type="string" value="Orchis-Dark-Compact"/>
     <property name="title_font" type="string" value="Noto Sans Bold 10"/>
     <property name="button_layout" type="string" value="O|HMC"/>
     <property name="use_compositing" type="bool" value="true"/>
@@ -269,7 +269,7 @@ show-button-title=false
 favorites=firefox-esr.desktop,thunar.desktop,xfce4-terminal.desktop,org.gnome.Software.desktop
 EOF
 
-# Acento violeta propio (mejor esfuerzo sobre el tema Materia)
+# Acento violeta propio (mejor esfuerzo sobre el tema Orchis)
 cat > "$SKEL/gtk-3.0/gtk.css" <<'EOF'
 selection,
 *:selected,
@@ -360,7 +360,7 @@ cat > "$INC/etc/lightdm/slick-greeter.conf" <<'EOF'
 [Greeter]
 background=/usr/share/backgrounds/yumios/yumios-default.png
 draw-user-backgrounds=false
-theme-name=Materia-dark-compact
+theme-name=Orchis-Dark-Compact
 icon-theme-name=Papirus-Dark
 font-name=Noto Sans 11
 show-a11y=false
@@ -404,6 +404,15 @@ else
   xfconf-query -c xfce4-desktop -p /backdrop/screen0/monitor0/workspace0/last-image \
     -n -t string -s "$WP"
 fi
+# Si el tema elegido no existe con ese nombre, usar la mejor alternativa instalada
+for T in Orchis-Dark-Compact Orchis-Dark Adwaita-dark; do
+  if [ -d "/usr/share/themes/$T" ]; then
+    xfconf-query -c xsettings -p /Net/ThemeName -n -t string -s "$T"
+    [ -d "/usr/share/themes/$T/xfwm4" ] && \
+      xfconf-query -c xfwm4 -p /general/theme -n -t string -s "$T"
+    break
+  fi
+done
 mkdir -p "$(dirname "$MARK")"
 touch "$MARK"
 yumi-welcome &
