@@ -139,26 +139,203 @@ EOF
 # 3) Fondo de pantalla propio (SVG; el hook lo convierte a PNG) y logo ASCII
 # -----------------------------------------------------------------------------
 cat > "$INC/usr/share/backgrounds/yumios/yumios-default.svg" <<'EOF'
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 1920 1080" width="1920" height="1080">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#fbf8ff"/>
+      <stop offset="0.55" stop-color="#e4d8fb"/>
+      <stop offset="1" stop-color="#b9a0ee"/>
+    </linearGradient>
+    <radialGradient id="glowL" cx="0.15" cy="0.2" r="0.55">
+      <stop offset="0" stop-color="#ffffff" stop-opacity="0.9"/>
+      <stop offset="1" stop-color="#ffffff" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="glowR" cx="0.9" cy="0.95" r="0.5">
+      <stop offset="0" stop-color="#8b5cf6" stop-opacity="0.35"/>
+      <stop offset="1" stop-color="#8b5cf6" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="r1" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#ffffff" stop-opacity="0.85"/>
+      <stop offset="0.5" stop-color="#c9b0f7" stop-opacity="0.75"/>
+      <stop offset="1" stop-color="#8b5cf6" stop-opacity="0.55"/>
+    </linearGradient>
+    <linearGradient id="r2" x1="1" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#e9ddff" stop-opacity="0.9"/>
+      <stop offset="1" stop-color="#9b72f0" stop-opacity="0.5"/>
+    </linearGradient>
+    <linearGradient id="r3" x1="0" y1="1" x2="1" y2="0">
+      <stop offset="0" stop-color="#7c4ddb" stop-opacity="0.45"/>
+      <stop offset="1" stop-color="#ffffff" stop-opacity="0.7"/>
+    </linearGradient>
+    <path id="spark" d="M0,-40 C3,-10 10,-3 40,0 C10,3 3,10 0,40 C-3,10 -10,3 -40,0 C-10,-3 -3,-10 0,-40 Z"/>
+    <filter id="glow" x="-100%" y="-100%" width="300%" height="300%"><feGaussianBlur stdDeviation="5"/></filter>
+    <filter id="soft"><feGaussianBlur stdDeviation="1.2"/></filter>
+  </defs>
+
+  <rect width="1920" height="1080" fill="url(#bg)"/>
+  <rect width="1920" height="1080" fill="url(#glowL)"/>
+  <rect width="1920" height="1080" fill="url(#glowR)"/>
+
+  <!-- cintas -->
+  <path d="M-120,760 C260,360 640,1020 1060,640 S1700,180 2060,90 L2060,430 C1720,560 1340,1010 920,1010 S220,880 -120,1040 Z" fill="url(#r1)"/>
+  <path d="M-120,520 C240,180 700,640 1000,420 S1560,-40 2040,-60 L2040,160 C1580,200 1260,700 900,760 S260,560 -120,760 Z" fill="url(#r2)"/>
+  <path d="M520,1120 C760,780 1100,900 1380,700 S1800,420 2060,460 L2060,1120 Z" fill="url(#r3)"/>
+  <path d="M-120,760 C260,360 640,1020 1060,640 S1700,180 2060,90" fill="none" stroke="#ffffff" stroke-opacity="0.7" stroke-width="3"/>
+
+  <!-- destellos -->
+  <g fill="#ffffff">
+    <g filter="url(#glow)" opacity="0.9">
+      <use href="#spark" transform="translate(180 210) scale(1.3)"/>
+      <use href="#spark" transform="translate(560 520) scale(1.6)"/>
+      <use href="#spark" transform="translate(900 760) scale(1.8)"/>
+      <use href="#spark" transform="translate(1480 300) scale(1.2)"/>
+      <use href="#spark" transform="translate(1700 800) scale(1.4)"/>
+    </g>
+    <use href="#spark" transform="translate(180 210) scale(1.3)"/>
+    <use href="#spark" transform="translate(90 120) scale(0.5)"/>
+    <use href="#spark" transform="translate(300 330) scale(0.35)"/>
+    <use href="#spark" transform="translate(560 520) scale(1.6)"/>
+    <use href="#spark" transform="translate(460 430) scale(0.4)"/>
+    <use href="#spark" transform="translate(700 600) scale(0.55)"/>
+    <use href="#spark" transform="translate(900 760) scale(1.8)"/>
+    <use href="#spark" transform="translate(1010 850) scale(0.6)"/>
+    <use href="#spark" transform="translate(1250 200) scale(0.45)"/>
+    <use href="#spark" transform="translate(1480 300) scale(1.2)"/>
+    <use href="#spark" transform="translate(1620 150) scale(0.5)"/>
+    <use href="#spark" transform="translate(1700 800) scale(1.4)"/>
+    <use href="#spark" transform="translate(1820 640) scale(0.45)"/>
+    <use href="#spark" transform="translate(760 220) scale(0.3)"/>
+  </g>
+
+  <text x="110" y="960" font-family="'Noto Sans','DejaVu Sans',sans-serif" font-size="64" font-weight="700" fill="#5b2fb4" fill-opacity="0.55" letter-spacing="1">yumiOS</text>
+</svg>
+EOF
+
+cat > "$INC/usr/share/backgrounds/yumios/yumios-lirio.svg" <<'EOF'
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" width="1920" height="1080">
   <defs>
     <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0" stop-color="#1a1033"/>
-      <stop offset="0.55" stop-color="#5b2e91"/>
-      <stop offset="1" stop-color="#e86aa8"/>
+      <stop offset="0" stop-color="#120b24"/>
+      <stop offset="0.5" stop-color="#2b1856"/>
+      <stop offset="1" stop-color="#5a2a86"/>
     </linearGradient>
-    <radialGradient id="glow" cx="0.78" cy="0.22" r="0.6">
-      <stop offset="0" stop-color="#ffd1e8" stop-opacity="0.55"/>
-      <stop offset="1" stop-color="#ffd1e8" stop-opacity="0"/>
+    <radialGradient id="halo" cx="0.70" cy="0.42" r="0.5">
+      <stop offset="0" stop-color="#c9a6ff" stop-opacity="0.55"/>
+      <stop offset="0.6" stop-color="#8b5cf6" stop-opacity="0.12"/>
+      <stop offset="1" stop-color="#8b5cf6" stop-opacity="0"/>
     </radialGradient>
+    <linearGradient id="petal" gradientUnits="userSpaceOnUse" x1="0" y1="0" x2="0" y2="-340">
+      <stop offset="0" stop-color="#f2e48a"/>
+      <stop offset="0.18" stop-color="#fff6ea"/>
+      <stop offset="0.7" stop-color="#ffffff"/>
+      <stop offset="1" stop-color="#f6d3ee"/>
+    </linearGradient>
+    <linearGradient id="petalBack" gradientUnits="userSpaceOnUse" x1="0" y1="0" x2="0" y2="-340">
+      <stop offset="0" stop-color="#d8c26a"/>
+      <stop offset="0.25" stop-color="#e9dff2"/>
+      <stop offset="1" stop-color="#d9b8ee"/>
+    </linearGradient>
+    <path id="p" d="M0,0 C78,-70 84,-240 0,-340 C-84,-240 -78,-70 0,0 Z"/>
+    <path id="rib" d="M0,-18 C4,-120 3,-230 0,-318" fill="none" stroke="#c9a6d8" stroke-opacity="0.55" stroke-width="3" stroke-linecap="round"/>
+    <filter id="blur"><feGaussianBlur stdDeviation="14"/></filter>
+    <filter id="soft"><feGaussianBlur stdDeviation="2"/></filter>
+    <filter id="shadow" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur stdDeviation="40"/>
+    </filter>
   </defs>
+
   <rect width="1920" height="1080" fill="url(#bg)"/>
-  <rect width="1920" height="1080" fill="url(#glow)"/>
-  <path d="M0 800 C 400 700, 700 900, 1100 800 S 1700 700, 1920 780 L1920 1080 L0 1080 Z" fill="#ffffff" fill-opacity="0.06"/>
-  <path d="M0 880 C 350 800, 800 980, 1200 890 S 1700 820, 1920 900 L1920 1080 L0 1080 Z" fill="#ffffff" fill-opacity="0.08"/>
-  <g fill="#ffffff" fill-opacity="0.92" font-family="sans-serif" text-anchor="middle">
-    <text x="960" y="520" font-size="120" font-weight="700" letter-spacing="2">yumiOS</text>
-    <text x="960" y="580" font-size="30" fill-opacity="0.7" letter-spacing="6">DULCE, LIGERO, TUYO</text>
+  <rect width="1920" height="1080" fill="url(#halo)"/>
+
+  <!-- luces suaves (bokeh) -->
+  <g fill="#ffffff" filter="url(#blur)">
+    <circle cx="260" cy="240" r="70" fill-opacity="0.07"/>
+    <circle cx="520" cy="820" r="110" fill-opacity="0.05"/>
+    <circle cx="880" cy="140" r="50" fill-opacity="0.08"/>
+    <circle cx="1740" cy="900" r="90" fill-opacity="0.06"/>
   </g>
+
+  <!-- lirio pequeño de fondo, desenfocado -->
+  <g transform="translate(1680 190) rotate(18) scale(0.42)" opacity="0.5" filter="url(#soft)">
+    <g fill="url(#petalBack)">
+      <use href="#p" transform="rotate(0)"/><use href="#p" transform="rotate(60)"/>
+      <use href="#p" transform="rotate(120)"/><use href="#p" transform="rotate(180)"/>
+      <use href="#p" transform="rotate(240)"/><use href="#p" transform="rotate(300)"/>
+    </g>
+  </g>
+
+  <!-- sombra del lirio principal -->
+  <ellipse cx="1345" cy="560" rx="300" ry="190" fill="#0d0618" opacity="0.28" filter="url(#shadow)"/>
+
+  <!-- lirio principal -->
+  <g transform="translate(1330 440) rotate(-14)">
+    <!-- pétalos de atrás -->
+    <g fill="url(#petalBack)">
+      <use href="#p" transform="rotate(60) scale(0.98)"/>
+      <use href="#p" transform="rotate(180) scale(0.98)"/>
+      <use href="#p" transform="rotate(300) scale(0.98)"/>
+    </g>
+    <!-- pétalos delanteros -->
+    <g fill="url(#petal)">
+      <use href="#p" transform="rotate(0)"/>
+      <use href="#p" transform="rotate(120)"/>
+      <use href="#p" transform="rotate(240)"/>
+    </g>
+    <g>
+      <use href="#rib" transform="rotate(0)"/>
+      <use href="#rib" transform="rotate(120)"/>
+      <use href="#rib" transform="rotate(240)"/>
+    </g>
+    <!-- garganta -->
+    <circle r="44" fill="#f2e48a" fill-opacity="0.85" filter="url(#soft)"/>
+    <!-- estambres -->
+    <g stroke="#f7efd0" stroke-width="5" stroke-linecap="round" fill="none">
+      <path d="M0,0 C14,-60 20,-110 24,-150"/>
+      <path d="M0,0 C-30,-40 -62,-80 -92,-104"/>
+      <path d="M0,0 C20,32 56,62 96,80"/>
+      <path d="M0,0 C-14,40 -24,90 -20,142"/>
+      <path d="M0,0 C-48,10 -100,10 -140,-6"/>
+    </g>
+    <g fill="#b4532a">
+      <ellipse cx="24" cy="-156" rx="9" ry="26" transform="rotate(8 24 -156)"/>
+      <ellipse cx="-96" cy="-108" rx="9" ry="26" transform="rotate(-52 -96 -108)"/>
+      <ellipse cx="100" cy="82" rx="9" ry="26" transform="rotate(115 100 82)"/>
+      <ellipse cx="-20" cy="148" rx="9" ry="26" transform="rotate(-4 -20 148)"/>
+      <ellipse cx="-146" cy="-8" rx="9" ry="26" transform="rotate(-100 -146 -8)"/>
+    </g>
+    <path d="M0,0 C30,-26 70,-46 112,-54" stroke="#c7e9a8" stroke-width="6" stroke-linecap="round" fill="none"/>
+    <circle cx="116" cy="-55" r="9" fill="#9bd07a"/>
+  </g>
+
+  <!-- marca -->
+  <g font-family="'Noto Sans','DejaVu Sans',sans-serif" fill="#ffffff">
+    <text x="120" y="930" font-size="76" font-weight="700" letter-spacing="1" fill-opacity="0.95">yumiOS</text>
+    <text x="124" y="978" font-size="24" letter-spacing="7" fill-opacity="0.6">LIGERO · LIMPIO · TUYO</text>
+  </g>
+</svg>
+EOF
+
+# Logo de yumiOS (icono del menú de inicio)
+mkdir -p "$INC/usr/share/icons/hicolor/scalable/apps"
+cat > "$INC/usr/share/icons/hicolor/scalable/apps/yumios-logo.svg" <<'EOF'
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#a78bfa"/>
+      <stop offset="1" stop-color="#f472b6"/>
+    </linearGradient>
+    <path id="p" d="M0,0 C9,-8 10,-24 0,-30 C-10,-24 -9,-8 0,0 Z"/>
+  </defs>
+  <circle cx="32" cy="32" r="31" fill="url(#g)"/>
+  <g transform="translate(32 33)" fill="#ffffff">
+    <use href="#p" transform="rotate(0)"/>
+    <use href="#p" transform="rotate(60)" fill-opacity="0.85"/>
+    <use href="#p" transform="rotate(120)"/>
+    <use href="#p" transform="rotate(180)" fill-opacity="0.85"/>
+    <use href="#p" transform="rotate(240)"/>
+    <use href="#p" transform="rotate(300)" fill-opacity="0.85"/>
+  </g>
+  <circle cx="32" cy="33" r="4" fill="#f2e48a"/>
 </svg>
 EOF
 
@@ -202,6 +379,104 @@ cat > "$SKEL/xfce4/xfconf/xfce-perchannel-xml/xsettings.xml" <<'EOF'
 </channel>
 EOF
 
+cat > "$SKEL/xfce4/xfconf/xfce-perchannel-xml/xfce4-desktop.xml" <<'EOF'
+<?xml version="1.0" encoding="UTF-8"?>
+<channel name="xfce4-desktop" version="1.0">
+  <property name="backdrop" type="empty">
+  <property name="screen0" type="empty">
+    <property name="monitorVirtual-1" type="empty">
+      <property name="workspace0" type="empty">
+        <property name="color-style" type="int" value="0"/>
+        <property name="image-style" type="int" value="5"/>
+        <property name="last-image" type="string" value="/usr/share/backgrounds/yumios/yumios-default.png"/>
+      </property>
+    </property>
+    <property name="monitorVirtual1" type="empty">
+      <property name="workspace0" type="empty">
+        <property name="color-style" type="int" value="0"/>
+        <property name="image-style" type="int" value="5"/>
+        <property name="last-image" type="string" value="/usr/share/backgrounds/yumios/yumios-default.png"/>
+      </property>
+    </property>
+    <property name="monitoreDP-1" type="empty">
+      <property name="workspace0" type="empty">
+        <property name="color-style" type="int" value="0"/>
+        <property name="image-style" type="int" value="5"/>
+        <property name="last-image" type="string" value="/usr/share/backgrounds/yumios/yumios-default.png"/>
+      </property>
+    </property>
+    <property name="monitoreDP1" type="empty">
+      <property name="workspace0" type="empty">
+        <property name="color-style" type="int" value="0"/>
+        <property name="image-style" type="int" value="5"/>
+        <property name="last-image" type="string" value="/usr/share/backgrounds/yumios/yumios-default.png"/>
+      </property>
+    </property>
+    <property name="monitorLVDS-1" type="empty">
+      <property name="workspace0" type="empty">
+        <property name="color-style" type="int" value="0"/>
+        <property name="image-style" type="int" value="5"/>
+        <property name="last-image" type="string" value="/usr/share/backgrounds/yumios/yumios-default.png"/>
+      </property>
+    </property>
+    <property name="monitorLVDS1" type="empty">
+      <property name="workspace0" type="empty">
+        <property name="color-style" type="int" value="0"/>
+        <property name="image-style" type="int" value="5"/>
+        <property name="last-image" type="string" value="/usr/share/backgrounds/yumios/yumios-default.png"/>
+      </property>
+    </property>
+    <property name="monitorHDMI-1" type="empty">
+      <property name="workspace0" type="empty">
+        <property name="color-style" type="int" value="0"/>
+        <property name="image-style" type="int" value="5"/>
+        <property name="last-image" type="string" value="/usr/share/backgrounds/yumios/yumios-default.png"/>
+      </property>
+    </property>
+    <property name="monitorHDMI1" type="empty">
+      <property name="workspace0" type="empty">
+        <property name="color-style" type="int" value="0"/>
+        <property name="image-style" type="int" value="5"/>
+        <property name="last-image" type="string" value="/usr/share/backgrounds/yumios/yumios-default.png"/>
+      </property>
+    </property>
+    <property name="monitorHDMI-A-1" type="empty">
+      <property name="workspace0" type="empty">
+        <property name="color-style" type="int" value="0"/>
+        <property name="image-style" type="int" value="5"/>
+        <property name="last-image" type="string" value="/usr/share/backgrounds/yumios/yumios-default.png"/>
+      </property>
+    </property>
+    <property name="monitorDP-1" type="empty">
+      <property name="workspace0" type="empty">
+        <property name="color-style" type="int" value="0"/>
+        <property name="image-style" type="int" value="5"/>
+        <property name="last-image" type="string" value="/usr/share/backgrounds/yumios/yumios-default.png"/>
+      </property>
+    </property>
+    <property name="monitorVGA-1" type="empty">
+      <property name="workspace0" type="empty">
+        <property name="color-style" type="int" value="0"/>
+        <property name="image-style" type="int" value="5"/>
+        <property name="last-image" type="string" value="/usr/share/backgrounds/yumios/yumios-default.png"/>
+      </property>
+    </property>
+    <property name="monitor0" type="empty">
+      <property name="workspace0" type="empty">
+        <property name="color-style" type="int" value="0"/>
+        <property name="image-style" type="int" value="5"/>
+        <property name="last-image" type="string" value="/usr/share/backgrounds/yumios/yumios-default.png"/>
+      </property>
+    </property>
+  </property>
+  </property>
+  <property name="desktop-icons" type="empty">
+    <property name="style" type="int" value="2"/>
+    <property name="icon-size" type="uint" value="48"/>
+  </property>
+</channel>
+EOF
+
 cat > "$SKEL/xfce4/xfconf/xfce-perchannel-xml/xfwm4.xml" <<'EOF'
 <?xml version="1.0" encoding="UTF-8"?>
 <channel name="xfwm4" version="1.0">
@@ -229,6 +504,13 @@ cat > "$SKEL/xfce4/xfconf/xfce-perchannel-xml/xfce4-panel.xml" <<'EOF'
       <property name="position-locked" type="bool" value="true"/>
       <property name="icon-size" type="uint" value="16"/>
       <property name="size" type="uint" value="30"/>
+      <property name="background-style" type="uint" value="1"/>
+      <property name="background-rgba" type="array">
+        <value type="double" value="0.07"/>
+        <value type="double" value="0.04"/>
+        <value type="double" value="0.15"/>
+        <value type="double" value="0.82"/>
+      </property>
       <property name="plugin-ids" type="array">
         <value type="int" value="1"/>
         <value type="int" value="2"/>
@@ -264,7 +546,7 @@ cat > "$SKEL/xfce4/xfconf/xfce-perchannel-xml/xfce4-panel.xml" <<'EOF'
 EOF
 
 cat > "$SKEL/xfce4/panel/whiskermenu-1.rc" <<'EOF'
-button-icon=start-here
+button-icon=yumios-logo
 show-button-title=false
 favorites=firefox-esr.desktop,thunar.desktop,xfce4-terminal.desktop,org.gnome.Software.desktop
 EOF
@@ -330,6 +612,43 @@ Exec=/usr/local/bin/yumi-first-login
 X-GNOME-Autostart-enabled=true
 EOF
 
+# Tema propio del dock (Plank): píldora oscura translúcida con borde suave
+mkdir -p "$INC/usr/share/plank/themes/yumi"
+cat > "$INC/usr/share/plank/themes/yumi/dock.theme" <<'EOF'
+[PlankTheme]
+TopRoundness=24
+BottomRoundness=24
+LineWidth=1
+OuterStrokeColor=255;;255;;255;;40
+FillStartColor=28;;20;;48;;225
+FillEndColor=28;;20;;48;;225
+InnerStrokeColor=255;;255;;255;;18
+
+[PlankDockTheme]
+HorizPadding=6
+TopPadding=4
+BottomPadding=4
+ItemPadding=8
+IndicatorSize=5
+IconShadowSize=0
+UrgentBounceHeight=1.6667
+LaunchBounceHeight=0.625
+FadeOpacity=1
+ClickTime=300
+UrgentBounceTime=600
+LaunchBounceTime=600
+ActiveTime=300
+SlideTime=300
+FadeTime=250
+HideTime=250
+GlowSize=30
+GlowTime=10000
+GlowPulseTime=2000
+UrgentHueShift=150
+ItemMoveTime=450
+CascadeHide=true
+EOF
+
 cat > "$INC/etc/dconf/profile/user" <<'EOF'
 user-db:user
 system-db:local
@@ -337,7 +656,7 @@ EOF
 
 cat > "$INC/etc/dconf/db/local.d/00-yumios" <<'EOF'
 [net/launchpad/plank/docks/dock1]
-theme='Transparent'
+theme='yumi'
 position='bottom'
 alignment='center'
 icon-size=44
@@ -358,7 +677,7 @@ EOF
 
 cat > "$INC/etc/lightdm/slick-greeter.conf" <<'EOF'
 [Greeter]
-background=/usr/share/backgrounds/yumios/yumios-default.png
+background=/usr/share/backgrounds/yumios/yumios-lirio.png
 draw-user-backgrounds=false
 theme-name=Orchis-Dark-Compact
 icon-theme-name=Papirus-Dark
@@ -390,20 +709,26 @@ cat > "$INC/usr/local/bin/yumi-first-login" <<'EOF'
 MARK="$HOME/.config/yumios/first-login-done"
 [ -f "$MARK" ] && exit 0
 WP=/usr/share/backgrounds/yumios/yumios-default.png
-PROPS=""
-for i in 1 2 3 4 5 6 7 8 9 10; do
-  PROPS=$(xfconf-query -c xfce4-desktop -l 2>/dev/null | grep 'last-image$' || true)
-  [ -n "$PROPS" ] && break
-  sleep 1
-done
-if [ -n "$PROPS" ]; then
-  for p in $PROPS; do
-    xfconf-query -c xfce4-desktop -p "$p" -s "$WP"
+
+# Esperar un poco a que arranque el escritorio
+sleep 3
+
+# Fondo en todos los monitores conectados (y en los 4 primeros escritorios)
+MONS=$(xrandr 2>/dev/null | awk '/ connected/{print $1}')
+[ -z "$MONS" ] && MONS="Virtual-1 eDP-1 LVDS-1 HDMI-1"
+for m in $MONS; do
+  for ws in 0 1 2 3; do
+    P="/backdrop/screen0/monitor$m/workspace$ws"
+    xfconf-query -c xfce4-desktop -p "$P/last-image" -n -t string -s "$WP"
+    xfconf-query -c xfce4-desktop -p "$P/image-style" -n -t int -s 5
   done
-else
-  xfconf-query -c xfce4-desktop -p /backdrop/screen0/monitor0/workspace0/last-image \
-    -n -t string -s "$WP"
-fi
+done
+# Y en cualquier propiedad de fondo que ya exista
+for p in $(xfconf-query -c xfce4-desktop -l 2>/dev/null | grep 'last-image$'); do
+  xfconf-query -c xfce4-desktop -p "$p" -s "$WP"
+done
+xfdesktop --reload >/dev/null 2>&1 || true
+
 # Si el tema elegido no existe con ese nombre, usar la mejor alternativa instalada
 for T in Orchis-Dark-Compact Orchis-Dark Adwaita-dark; do
   if [ -d "/usr/share/themes/$T" ]; then
@@ -502,9 +827,9 @@ echo "${YUMI_NAME} ${YUMI_VERSION}" > /etc/issue.net
 
 # Fondo: SVG -> PNG 4K (más compatible con el escritorio y el greeter)
 if command -v rsvg-convert >/dev/null 2>&1; then
-  rsvg-convert -w 3840 -h 2160 \
-    /usr/share/backgrounds/yumios/yumios-default.svg \
-    -o /usr/share/backgrounds/yumios/yumios-default.png
+  for f in /usr/share/backgrounds/yumios/*.svg; do
+    rsvg-convert -w 2560 -h 1440 "$f" -o "${f%.svg}.png"
+  done
 fi
 
 # Flathub activado de serie (mejor esfuerzo)
@@ -519,6 +844,40 @@ if [ -d /usr/share/calamares/branding ]; then
   grep -rl "Debian GNU/Linux" /usr/share/calamares/branding 2>/dev/null \
     | xargs -r sed -i "s#Debian GNU/Linux#${YUMI_NAME}#g" || true
 fi
+
+# El instalador y el icono del escritorio dicen yumiOS, no Debian
+grep -rlE 'Install Debian|Instalar Debian' /usr/share/applications /etc/skel /usr/share/calamares 2>/dev/null \
+  | xargs -r sed -i -e 's/Install Debian/Instalar yumiOS/g' -e 's/Instalar Debian/Instalar yumiOS/g' || true
+
+# Fondo de yumiOS como valor por defecto del sistema (además de /etc/skel)
+mkdir -p /etc/xdg/xfce4/xfconf/xfce-perchannel-xml
+cp /etc/skel/.config/xfce4/xfconf/xfce-perchannel-xml/xfce4-desktop.xml \
+   /etc/xdg/xfce4/xfconf/xfce-perchannel-xml/xfce4-desktop.xml || true
+
+# Logo nuevo disponible para el tema de iconos
+gtk-update-icon-cache -f /usr/share/icons/hicolor 2>/dev/null || true
+
+# Carpetas e iconos en violeta (recolorea el azul de Papirus; mejor esfuerzo)
+for d in /usr/share/icons/Papirus /usr/share/icons/Papirus-Dark; do
+  [ -d "$d" ] || continue
+  find "$d" -name '*.svg' \( -name 'folder*' -o -name 'user-*' -o -name 'inode-directory*' \) -type f -print0 \
+    | xargs -0 -r sed -i -e 's/#5294e2/#8b5cf6/gI' -e 's/#4877b1/#6d3fd1/gI' -e 's/#2e7bcf/#6d3fd1/gI' || true
+  gtk-update-icon-cache -f "$d" 2>/dev/null || true
+done
+
+# Inicio de sesión: grupo y regla PAM para entrar sin contraseña, y teclado en español
+getent group nopasswdlogin >/dev/null || groupadd -r nopasswdlogin
+getent group autologin >/dev/null || groupadd -r autologin
+if [ -f /etc/pam.d/lightdm ] && ! grep -q nopasswdlogin /etc/pam.d/lightdm; then
+  sed -i '0,/^@include common-auth/s//auth    sufficient      pam_succeed_if.so user ingroup nopasswdlogin\n@include common-auth/' /etc/pam.d/lightdm
+fi
+cat > /etc/default/keyboard <<EOT
+XKBMODEL="pc105"
+XKBLAYOUT="es"
+XKBVARIANT=""
+XKBOPTIONS=""
+BACKSPACE="guess"
+EOT
 
 # Aplicar la base de datos de dconf
 dconf update || true
